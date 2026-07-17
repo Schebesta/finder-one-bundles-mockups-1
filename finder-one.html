@@ -7,39 +7,35 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-black text-white font-sans selection:bg-gray-700">
-    <!-- Navbar -->
     <nav class="px-8 py-6 flex justify-between items-center border-b border-gray-800 bg-black/80 backdrop-blur-md sticky top-0 z-50">
         <div class="text-2xl font-bold tracking-tighter">finder<span class="text-gray-500">ONE</span></div>
-        <div class="text-sm font-semibold tracking-widest uppercase text-gray-400">Invite Only</div>
+        <div class="space-x-4">
+            <a href="#pricing" class="text-sm font-semibold text-gray-400 hover:text-white transition">Pricing</a>
+            <span class="text-sm font-semibold tracking-widest uppercase text-gray-400 border border-gray-700 px-3 py-1 rounded-full">Invite Only</span>
+        </div>
     </nav>
 
     <!-- Hero Section -->
     <div class="max-w-7xl mx-auto px-6 py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        
-        <!-- Left: Pitch & CTA -->
         <div class="text-left">
             <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
                 You don't have time to do the math.<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">We do.</span>
             </h1>
             <p class="text-xl text-gray-400 mb-10 leading-relaxed max-w-lg">
-                Stop pretending you're going to compare rates this weekend. Connect your email, and our robot will securely scan your inbox to find your bills. Then, our private concierge team negotiates and executes the switches for you.
+                Stop pretending you're going to compare rates this weekend. Connect your email, and our robot will securely scan your inbox to find your bills. See exactly how much you're overpaying for $99, or let our concierge team execute the switches for you for $199/yr.
             </p>
             
             <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 max-w-md shadow-2xl relative overflow-hidden">
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50"></div>
                 <h3 class="text-2xl font-bold mb-6">Start our robot on your Bill review</h3>
                 <div class="space-y-4">
-                    <button class="w-full bg-white text-black hover:bg-gray-200 font-bold py-4 px-8 rounded-lg text-lg transition shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center">
+                    <a href="scan.html" class="w-full bg-white text-black hover:bg-gray-200 font-bold py-4 px-8 rounded-lg text-lg transition shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center">
                         <svg class="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
                         </svg>
                         Connect Gmail
-                    </button>
-                    <button class="w-full bg-[#0078d4] hover:bg-[#006cbd] text-white font-bold py-4 px-8 rounded-lg text-lg transition flex items-center justify-center">
-                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        Connect Outlook
-                    </button>
+                    </a>
                 </div>
                 <p class="text-xs text-gray-500 mt-6 text-center flex justify-center items-center">
                     <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
@@ -48,11 +44,8 @@
             </div>
         </div>
 
-        <!-- Right: The Visual Mockup of Savings -->
         <div class="relative w-full max-w-lg mx-auto">
-            <!-- Glow background -->
             <div class="absolute inset-0 bg-blue-500 blur-[100px] opacity-20 rounded-full"></div>
-            
             <div class="bg-gray-900 border border-gray-700 rounded-3xl p-8 relative z-10 shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500">
                 <div class="flex justify-between items-center border-b border-gray-800 pb-4 mb-6">
                     <div class="flex items-center">
@@ -66,7 +59,6 @@
                 <h2 class="text-6xl font-extrabold text-white mb-8">$3,420<span class="text-2xl text-gray-500">.00</span></h2>
                 
                 <div class="space-y-4">
-                    <!-- Item -->
                     <div class="flex justify-between items-center bg-black/50 p-4 rounded-xl border border-gray-800">
                         <div class="flex items-center">
                             <div class="text-2xl mr-4">🏠</div>
@@ -77,7 +69,6 @@
                         </div>
                         <div class="text-green-400 font-bold">+$2,100/yr</div>
                     </div>
-                    <!-- Item -->
                     <div class="flex justify-between items-center bg-black/50 p-4 rounded-xl border border-gray-800">
                         <div class="flex items-center">
                             <div class="text-2xl mr-4">🏥</div>
@@ -88,7 +79,6 @@
                         </div>
                         <div class="text-green-400 font-bold">+$650/yr</div>
                     </div>
-                    <!-- Item -->
                     <div class="flex justify-between items-center bg-black/50 p-4 rounded-xl border border-gray-800">
                         <div class="flex items-center">
                             <div class="text-2xl mr-4">⚡️</div>
@@ -99,108 +89,51 @@
                         </div>
                         <div class="text-green-400 font-bold">+$420/yr</div>
                     </div>
-                    <!-- Item -->
-                    <div class="flex justify-between items-center bg-black/50 p-4 rounded-xl border border-gray-800">
-                        <div class="flex items-center">
-                            <div class="text-2xl mr-4">🌐</div>
-                            <div>
-                                <div class="font-bold">Broadband</div>
-                                <div class="text-xs text-gray-500">Speed upgrade + price drop</div>
-                            </div>
-                        </div>
-                        <div class="text-green-400 font-bold">+$250/yr</div>
-                    </div>
                 </div>
-
-                <button class="w-full mt-8 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl text-lg transition flex items-center justify-center group">
-                    Approve All Switches
-                    <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </button>
-                <p class="text-center text-gray-500 text-xs mt-4">We sit on hold. We fill the forms. You just sign.</p>
             </div>
         </div>
     </div>
 
-    <!-- What We Cover Section -->
-    <div class="bg-gray-900 border-y border-gray-800 py-24">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- Pricing Section -->
+    <div id="pricing" class="bg-gray-900 border-y border-gray-800 py-24">
+        <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-extrabold mb-4">We leave no stone unturned.</h2>
-                <p class="text-xl text-gray-400">Our robot identifies every bill, and our team negotiates every rate across 8 core categories.</p>
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Choose your level of service</h2>
+                <p class="text-xl text-gray-400">Do you want the roadmap, or do you want a driver?</p>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="bg-black border border-gray-800 p-6 rounded-2xl text-center hover:border-blue-500 transition">
-                    <div class="text-4xl mb-4">🏠</div>
-                    <h3 class="font-bold text-lg">Mortgage</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Tier 1 -->
+                <div class="bg-black border border-gray-700 rounded-3xl p-10 flex flex-col hover:border-gray-500 transition">
+                    <h3 class="text-2xl font-bold mb-2">Robo Advice</h3>
+                    <p class="text-gray-400 mb-6">The DIY Blueprint.</p>
+                    <div class="text-5xl font-black mb-8">$99 <span class="text-lg text-gray-500 font-normal">one-off</span></div>
+                    <ul class="space-y-4 mb-10 flex-1">
+                        <li class="flex items-start"><svg class="w-6 h-6 text-green-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="text-gray-300">Full AI scan of your inbox for all bills</span></li>
+                        <li class="flex items-start"><svg class="w-6 h-6 text-green-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="text-gray-300">Detailed report on exactly where you are overpaying</span></li>
+                        <li class="flex items-start"><svg class="w-6 h-6 text-green-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="text-gray-300">Direct links to the cheapest competitor products</span></li>
+                        <li class="flex items-start opacity-50"><svg class="w-6 h-6 text-gray-600 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> <span class="text-gray-500">Concierge execution of switches</span></li>
+                        <li class="flex items-start opacity-50"><svg class="w-6 h-6 text-gray-600 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> <span class="text-gray-500">Ongoing 24/7 rate monitoring</span></li>
+                    </ul>
+                    <a href="scan.html" class="w-full block text-center bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 rounded-xl transition">Start $99 Scan</a>
                 </div>
-                <div class="bg-black border border-gray-800 p-6 rounded-2xl text-center hover:border-blue-500 transition">
-                    <div class="text-4xl mb-4">⚡️</div>
-                    <h3 class="font-bold text-lg">Energy</h3>
-                </div>
-                <div class="bg-black border border-gray-800 p-6 rounded-2xl text-center hover:border-blue-500 transition">
-                    <div class="text-4xl mb-4">🌐</div>
-                    <h3 class="font-bold text-lg">Broadband</h3>
-                </div>
-                <div class="bg-black border border-gray-800 p-6 rounded-2xl text-center hover:border-blue-500 transition">
-                    <div class="text-4xl mb-4">📱</div>
-                    <h3 class="font-bold text-lg">Mobile Plans</h3>
-                </div>
-                <div class="bg-black border border-gray-800 p-6 rounded-2xl text-center hover:border-blue-500 transition">
-                    <div class="text-4xl mb-4">🏥</div>
-                    <h3 class="font-bold text-lg">Health Insurance</h3>
-                </div>
-                <div class="bg-black border border-gray-800 p-6 rounded-2xl text-center hover:border-blue-500 transition">
-                    <div class="text-4xl mb-4">🏡</div>
-                    <h3 class="font-bold text-lg">Home Insurance</h3>
-                </div>
-                <div class="bg-black border border-gray-800 p-6 rounded-2xl text-center hover:border-blue-500 transition">
-                    <div class="text-4xl mb-4">🚗</div>
-                    <h3 class="font-bold text-lg">Car Insurance</h3>
-                </div>
-                <div class="bg-black border border-gray-800 p-6 rounded-2xl text-center hover:border-blue-500 transition">
-                    <div class="text-4xl mb-4">🐶</div>
-                    <h3 class="font-bold text-lg">Pet Insurance</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- How It Works Section -->
-    <div class="max-w-7xl mx-auto px-6 py-32">
-        <div class="text-center mb-20">
-            <h2 class="text-5xl font-extrabold mb-6">How we do it for you</h2>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto">This isn't a DIY comparison site. Finder One is a white-glove service powered by AI and executed by humans.</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
-            <!-- Connecting Line for Desktop -->
-            <div class="hidden md:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-gray-800 -z-10"></div>
-            
-            <div class="text-center bg-black relative">
-                <div class="w-24 h-24 bg-gray-900 border-2 border-blue-500 text-blue-500 rounded-full flex items-center justify-center text-3xl font-black mx-auto mb-8 shadow-[0_0_30px_rgba(59,130,246,0.3)]">1</div>
-                <h4 class="text-2xl font-bold mb-4">The Robot Scans</h4>
-                <p class="text-gray-400 leading-relaxed">You securely connect your email. Our AI instantly combs through your inbox, finding your latest statements, bills, and policy renewal notices automatically.</p>
-            </div>
-            <div class="text-center bg-black relative">
-                <div class="w-24 h-24 bg-gray-900 border-2 border-purple-500 text-purple-500 rounded-full flex items-center justify-center text-3xl font-black mx-auto mb-8 shadow-[0_0_30px_rgba(168,85,247,0.3)]">2</div>
-                <h4 class="text-2xl font-bold mb-4">The Engine Compares</h4>
-                <p class="text-gray-400 leading-relaxed">We extract exactly what you're paying right now. Our market-leading database runs the math against thousands of products to find your maximum savings.</p>
-            </div>
-            <div class="text-center bg-black relative">
-                <div class="w-24 h-24 bg-gray-900 border-2 border-green-500 text-green-500 rounded-full flex items-center justify-center text-3xl font-black mx-auto mb-8 shadow-[0_0_30px_rgba(34,197,94,0.3)]">3</div>
-                <h4 class="text-2xl font-bold mb-4">The Concierge Executes</h4>
-                <p class="text-gray-400 leading-relaxed">You tap "Approve." We take over. We sit on hold, we fill out the forms, and we deal with your old providers. The savings just appear in your bank account.</p>
-            </div>
-        </div>
-    </div>
 
-    <!-- Final Footer CTA -->
-    <div class="border-t border-gray-900 py-24 text-center">
-        <h2 class="text-4xl font-extrabold mb-8">Ready to stop overpaying?</h2>
-        <button class="bg-white text-black hover:bg-gray-200 font-bold py-4 px-12 rounded-full text-xl transition shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-            Review my Bills
-        </button>
+                <!-- Tier 2 -->
+                <div class="bg-gray-900 border-2 border-blue-500 rounded-3xl p-10 flex flex-col relative transform md:-translate-y-4 shadow-[0_0_40px_rgba(59,130,246,0.2)]">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">Most Popular</div>
+                    <h3 class="text-2xl font-bold mb-2">Finder One Concierge</h3>
+                    <p class="text-blue-400 mb-6">We do everything for you.</p>
+                    <div class="text-5xl font-black mb-8">$199 <span class="text-lg text-gray-500 font-normal">/ year</span></div>
+                    <ul class="space-y-4 mb-10 flex-1">
+                        <li class="flex items-start"><svg class="w-6 h-6 text-blue-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="text-gray-300">Everything in Robo Advice</span></li>
+                        <li class="flex items-start"><svg class="w-6 h-6 text-blue-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="text-white font-bold">We sit on hold and negotiate for you</span></li>
+                        <li class="flex items-start"><svg class="w-6 h-6 text-blue-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="text-white font-bold">We handle the paperwork and switch you</span></li>
+                        <li class="flex items-start"><svg class="w-6 h-6 text-blue-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="text-gray-300">Ongoing 24/7 rate monitoring and auto-switching</span></li>
+                    </ul>
+                    <a href="scan.html" class="w-full block text-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl transition shadow-lg">Start Full Concierge</a>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
