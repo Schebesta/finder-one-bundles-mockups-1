@@ -6,7 +6,8 @@
     <title>Stripe Checkout</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white flex flex-col md:flex-row min-h-screen font-sans">
+<body class="bg-white min-h-screen flex flex-col font-sans">
+    <div class="flex flex-col md:flex-row flex-1">
     <!-- Left panel (Order Summary) -->
     <div class="w-full md:w-1/2 bg-gray-50 md:border-r border-gray-200 flex justify-center md:justify-end p-8 md:p-10">
         <div class="max-w-md w-full mt-4 md:mt-10">
@@ -64,5 +65,22 @@
             </form>
         </div>
     </div>
+    </div>
+
+    <!-- Disclaimers / Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 py-10">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-xs text-gray-500 leading-relaxed space-y-3">
+                <p class="text-gray-600 font-bold uppercase tracking-widest text-[11px]">Important information</p>
+                <p><span class="text-gray-700 font-semibold">General advice only.</span> Finder One provides factual information and general advice. It does not take into account your personal objectives, financial situation or needs. Consider whether it is appropriate for you and read the relevant Product Disclosure Statement, Target Market Determination and Key Facts Sheet before making any decision to acquire or switch a product.</p>
+                <p><span class="text-gray-700 font-semibold">Savings are estimates, not guarantees.</span> Any savings figures shown are illustrative examples, not quotes. Actual savings depend on your current products, usage, eligibility, credit approval and provider terms, and may be lower or nil. We do not compare every provider or product in the market.</p>
+                <p><span class="text-gray-700 font-semibold">Billing.</span> Finder One Concierge is $199 per year, billed annually and incl. GST; cancel anytime. The annual fee is non-refundable except where the money-back guarantee applies. Terms apply.</p>
+                <p><span class="text-gray-700 font-semibold">Your data &amp; email access.</span> Email access is read-only and used solely to locate your bills, statements and renewal notices. We never send email on your behalf. Data is encrypted in transit and at rest and is never sold. You can disconnect access and request deletion at any time.</p>
+                <p><span class="text-gray-700 font-semibold">How switches happen.</span> Concierge switches are only ever carried out with your explicit approval for each switch. We act on your instruction and do not store your banking login credentials.</p>
+                <p><span class="text-gray-700 font-semibold">How we get paid.</span> Finder may receive a fee or commission from some providers when you take up a product through us. This is in addition to your membership and does not change the price you pay.</p>
+                <p class="text-gray-400">Finder One is a service of Hive Empire Pty Ltd, trading as finder.com.au (ABN 18 118 785 121). Finder provides general advice on financial products as a Corporate Authorised Representative (CAR 432664) of Finder.com.au Pty Ltd, AFSL 547310, and general advice on credit products under its own Australian Credit Licence (ACL) 385509. © 2026 Finder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
