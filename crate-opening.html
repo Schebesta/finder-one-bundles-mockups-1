@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finder One - Crate Opening</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #08070c; /* ink */
+            color: rgba(255,255,255,0.8);
+            overflow-x: hidden;
+        }
+
+        /* Ambient Glow Background */
+        .bg-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(233,197,107,0.1) 0%, rgba(8,7,12,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Crate Grid */
+        .crate-grid {
+            display: grid;
+            /* Simulating a massive grid, but rendering a manageable chunk for the mockup */
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 8px;
+            padding: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Individual Crate */
+        .crate {
+            aspect-ratio: 1;
+            background: linear-gradient(145deg, rgba(20,16,10,0.95), rgba(8,7,12,0.98)); /* warm black to ink */
+            border: 1px solid rgba(233,197,107,0.15); /* faint gold */
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: inset 0 2px 4px rgba(233,197,107,0.05), 0 4px 12px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .crate:hover:not(.opened) {
+            transform: translateY(-4px) scale(1.05);
+            border-color: #e9c56b; /* gold */
+            box-shadow: 0 0 15px rgba(233, 197, 107, 0.3);
+            z-index: 10;
+        }
+
+        .crate:active:not(.opened) {
+            transform: scale(0.95);
+        }
+
+        /* Rattle Animation on hover */
+        @keyframes rattle {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(3deg); }
+            50% { transform: rotate(-3deg); }
+            75% { transform: rotate(2deg); }
+            100% { transform: rotate(0deg); }
+        }
+        .crate:hover:not(.opened) {
+            animation: rattle 0.3s ease-in-out infinite;
+        }
+
+        /* Opened State */
+        .crate.opened {
+            background: #000;
+            border-color: rgba(255,255,255,0.1);
+            box-shadow: inset 0 0 20px rgba(0,0,0,1);
+            cursor: default;
+            transform: scale(0.95);
+            opacity: 0.6;
+        }
+
+        .crate.opened.prize-gold {
+            background: radial-gradient(circle, rgba(236,201,75,0.2) 0%, #000 100%);
+            border-color: #ECC94B;
+            box-shadow: 0 0 25px rgba(236,201,75,0.6);
+            opacity: 1;
+            transform: scale(1.1);
+            z-index: 20;
+        }
+
+        .crate.opened.prize-toy {
+            background: radial-gradient(circle, rgba(244,226,176,0.22) 0%, #000 100%);
+            border-color: #f4e2b0; /* champagne gold */
+            box-shadow: 0 0 20px rgba(244,226,176,0.55);
+            opacity: 1;
+            z-index: 15;
+        }
+
+        .crate.opened.prize-affiliate {
+            background: radial-gradient(circle, rgba(184,146,63,0.2) 0%, #000 100%);
+            border-color: #b8923f; /* antique bronze gold */
+            opacity: 0.9;
+        }
+
+        /* Reveal Modal overlay */
+        #reveal-modal {
+            backdrop-filter: blur(12px);
+            background: rgba(8,7,12,0.9);
+            transition: opacity 0.4s ease;
+        }
+
+        /* HUD */
+        .hud {
+            background: rgba(8,7,12,0.8);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(233,197,107,0.15);
+        }
+
+        .gold-text {
+            background: linear-gradient(100deg, #b8923f 0%, #f4e2b0 25%, #e9c56b 50%, #f8eec6 70%, #b8923f 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <!-- Top HUD -->
+    <header class="hud fixed top-0 w-full z-40 px-6 py-4 flex justify-between items-center">
+        <div>
+            <h1 class="text-2xl font-extrabold tracking-tight text-white" style="font-family: 'Playfair Display', serif;">Finder <span class="gold-text">One</span></h1>
+            <p class="text-[10px] text-gray-400 font-medium uppercase tracking-[0.2em] mt-1">Limited Drop Secured. Now, claim your bonuses.</p>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="text-right">
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest">Picks Remaining</p>
+                <p class="text-3xl font-bold gold-text drop-shadow-md" id="picks-count">5</p>
+            </div>
+            <button class="bg-gradient-to-r from-[#e9c56b] to-[#f4e2b0] text-[#08070c] px-6 py-2 rounded-full font-bold transition-all shadow-lg shadow-[#e9c56b]/20 transform hover:scale-105">
+                Buy More Picks
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Grid Area -->
+    <main class="pt-28 pb-10 min-h-screen flex flex-col items-center justify-center">
+        <div class="text-center mb-8">
+            <h2 class="text-4xl font-extrabold mb-2 text-white" style="font-family: 'Playfair Display', serif;">2,500 Crates. <span class="gold-text italic">1 Golden Ticket.</span></h2>
+            <p class="text-gray-400">Find the $199 Golden Crate to get your Finder One subscription entirely free.</p>
+        </div>
+        
+        <!-- We render a representative 100 crates for the mockup to keep DOM light, implying a larger scrolling area -->
+        <div class="crate-grid w-full" id="grid">
+            <!-- Injected via JS -->
+        </div>
+    </main>
+
+    <!-- Reveal Modal -->
+    <div id="reveal-modal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none">
+        <div class="text-center transform scale-90 transition-transform duration-500 ease-out" id="reveal-content">
+            <div id="reveal-fx" class="absolute inset-0 z-[-1] rounded-full blur-3xl opacity-50 transition-colors duration-500"></div>
+            <h3 class="text-xl text-gray-300 font-semibold uppercase tracking-widest mb-2">You Found</h3>
+            <h2 id="reveal-title" class="text-6xl font-extrabold text-white mb-6 drop-shadow-2xl">UberOne 3-Month Trial</h2>
+            <div id="reveal-icon" class="text-9xl mb-8 transform hover:scale-110 transition-transform">🍔</div>
+            <button onclick="closeReveal()" class="bg-white text-black px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-200 transition-colors">
+                Awesome!
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const grid = document.getElementById('grid');
+        const picksDisplay = document.getElementById('picks-count');
+        const modal = document.getElementById('reveal-modal');
+        const revealContent = document.getElementById('reveal-content');
+        const revealTitle = document.getElementById('reveal-title');
+        const revealIcon = document.getElementById('reveal-icon');
+        const revealFx = document.getElementById('reveal-fx');
+        
+        let picks = 5;
+        const totalCrates = 150; // Mockup size (represents 2500)
+        
+        // Setup mock prizes
+        const prizes = [
+            { type: 'gold', name: '$199 FULL REFUND', icon: '🏆', color: '#ECC94B', class: 'prize-gold' },
+            { type: 'toy', name: 'Legendary Finderbot', icon: '🤖', color: '#f4e2b0', class: 'prize-toy' },
+            { type: 'affiliate', name: 'HelloFresh Free Box', icon: '🥗', color: '#b8923f', class: 'prize-affiliate' },
+            { type: 'affiliate', name: 'UberOne 3 Months', icon: '🚗', color: '#b8923f', class: 'prize-affiliate' },
+            { type: 'toy', name: 'Rare Finderbot', icon: '👾', color: '#f4e2b0', class: 'prize-toy' }
+        ];
+
+        // Generate Crates
+        for (let i = 0; i < totalCrates; i++) {
+            const el = document.createElement('div');
+            el.className = 'crate';
+            el.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A5568" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>`;
+            
+            el.addEventListener('click', () => {
+                if (el.classList.contains('opened') || picks <= 0) return;
+                
+                picks--;
+                picksDisplay.innerText = picks;
+                
+                // Random Prize Logic (Mock)
+                let prize;
+                const rand = Math.random();
+                if (rand > 0.98) prize = prizes[0]; // Gold
+                else if (rand > 0.85) prize = prizes[1]; // Legend Toy
+                else if (rand > 0.70) prize = prizes[4]; // Rare Toy
+                else if (rand > 0.35) prize = prizes[2]; // HelloFresh
+                else prize = prizes[3]; // UberOne
+
+                // Update Crate Visuals
+                el.classList.add('opened', prize.class);
+                el.innerHTML = `<div class="text-2xl">${prize.icon}</div>`;
+                
+                // Haptic feedback (if supported)
+                if (navigator.vibrate) navigator.vibrate(50);
+
+                showReveal(prize);
+            });
+            grid.appendChild(el);
+        }
+
+        function showReveal(prize) {
+            // Setup content
+            revealTitle.innerText = prize.name;
+            revealTitle.style.color = prize.color;
+            revealIcon.innerText = prize.icon;
+            revealFx.style.backgroundColor = prize.color;
+
+            // Animate In
+            modal.classList.remove('pointer-events-none', 'opacity-0');
+            modal.classList.add('opacity-100');
+            setTimeout(() => {
+                revealContent.classList.remove('scale-90');
+                revealContent.classList.add('scale-100');
+            }, 50);
+        }
+
+        function closeReveal() {
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            revealContent.classList.remove('scale-100');
+            revealContent.classList.add('scale-90');
+            
+            if (picks === 0) {
+                setTimeout(() => {
+                    alert('Out of picks! Showing missed prizes... (Loss Aversion Trigger)');
+                    // In a real app, this would rapidly flip remaining crates
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
